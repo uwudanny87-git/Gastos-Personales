@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestras Finanzas & Deseos</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuentes elegantes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <header class="header">
+            <h1>☕ Finanzas en Pareja</h1>
+            <p>Control elegante y sencillo de nuestros gastos y metas</p>
+        </header>
+
+        <!-- Resumen General -->
+        <section class="summary-card">
+            <h2>Resumen Conjunto</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <span>Total Ingresos</span>
+                    <strong id="total-ingresos">$0</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Total Gastos</span>
+                    <strong id="total-gastos">$0</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Saldo Restante Total</span>
+                    <strong id="total-saldo">$0</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paneles de Gastos (Danny y Santiago) -->
+        <div class="panels-grid">
+            <!-- Panel Danny -->
+            <div class="user-panel">
+                <div class="panel-header">
+                    <h3>Panel de Danny</h3>
+                    <div class="initial-box">
+                        <label>Dinero Inicial / Recibido:</label>
+                        <input type="number" id="income-danny" placeholder="Ej: 500000" oninput="actualizarDatos()">
+                    </div>
+                </div>
+
+                <div class="stats-row">
+                    <div>Gastado: <span id="spent-danny">$0</span></div>
+                    <div>Disponible: <span id="balance-danny" class="balance-amount">$0</span></div>
+                </div>
+
+                <form id="form-danny" onsubmit="agregarGasto(event, 'danny')">
+                    <h4>Registrar Nuevo Gasto</h4>
+                    <input type="text" id="desc-danny" placeholder="¿En qué gastaste?" required>
+                    <input type="number" id="amount-danny" placeholder="Valor" required>
+                    <button type="submit" class="btn-primary">Añadir Gasto</button>
+                </form>
+
+                <div class="expenses-list">
+                    <h4>Historial de Gastos</h4>
+                    <ul id="list-danny"></ul>
+                </div>
+            </div>
+
+            <!-- Panel Santiago -->
+            <div class="user-panel">
+                <div class="panel-header">
+                    <h3>Panel de Santiago</h3>
+                    <div class="initial-box">
+                        <label>Dinero Inicial / Recibido:</label>
+                        <input type="number" id="income-santiago" placeholder="Ej: 500000" oninput="actualizarDatos()">
+                    </div>
+                </div>
+
+                <div class="stats-row">
+                    <div>Gastado: <span id="spent-santiago">$0</span></div>
+                    <div>Disponible: <span id="balance-santiago" class="balance-amount">$0</span></div>
+                </div>
+
+                <form id="form-santiago" onsubmit="agregarGasto(event, 'santiago')">
+                    <h4>Registrar Nuevo Gasto</h4>
+                    <input type="text" id="desc-santiago" placeholder="¿En qué gastaste?" required>
+                    <input type="number" id="amount-santiago" placeholder="Valor" required>
+                    <button type="submit" class="btn-primary">Añadir Gasto</button>
+                </form>
+
+                <div class="expenses-list">
+                    <h4>Historial de Gastos</h4>
+                    <ul id="list-santiago"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Deseos (Wishlist) -->
+        <section class="wishlist-section">
+            <h2>✨ Nuestra Wishlist (Cosas que queremos comprar)</h2>
+            <form id="form-wish" onsubmit="agregarDeseo(event)">
+                <div class="wish-form-grid">
+                    <select id="wish-user">
+                        <option value="Danny">Danny</option>
+                        <option value="Santiago">Santiago</option>
+                        <option value="Ambos">Ambos (Conjunto)</option>
+                    </select>
+                    <input type="text" id="wish-item" placeholder="¿Qué te gustaría tener o comprar?" required>
+                    <button type="submit" class="btn-accent">Añadir a la Lista</button>
+                </div>
+            </form>
+            <ul id="wishlist" class="wish-list"></ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
